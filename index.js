@@ -15,11 +15,11 @@ function work() {
     docker.createContainer({
         Image: process.env.SCHEDULER_IMAGE,
         Cmd: cmd,
-        'AttachStdin': true,
-        'AttachStdout': true,
-        'AttachStderr': true,
-        'Tty': true,
-        'OpenStdin': true,
+        'AttachStdin': false,
+        'AttachStdout': false,
+        'AttachStderr': false,
+        'Tty': false,
+        'OpenStdin': false,
         'StdinOnce': false
     }, function (err, container) {
 
