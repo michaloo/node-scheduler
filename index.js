@@ -12,8 +12,16 @@ function work() {
 
     console.log("run container", process.env.SCHEDULER_IMAGE, cmd.join(" "));
 
-    docker.createContainer(
-        { Image: process.env.SCHEDULER_IMAGE, Cmd: cmd }, function (err, container) {
+    docker.createContainer({
+        Image: process.env.SCHEDULER_IMAGE,
+        Cmd: cmd,
+        'AttachStdin': true,
+        'AttachStdout': true,
+        'AttachStderr': true,
+        'Tty': true,
+        'OpenStdin': true,
+        'StdinOnce': false
+    }, function (err, container) {
 
             if (err) {
                 return console.error(err);
